@@ -1,0 +1,20 @@
+001,Tackle,10,10,0,0
+002,Scrath,15,10,0,0
+003,Bite,20,10,0,0   
+004,tail Whip,0,10,0,0
+005,Headbutt,30,10,0,0
+006,Withdraw,0,10,0,0
+007,bubblegum,15,100,0,0
+008,Water gun,30,100,0,0
+009,Gust,20,100,0,0
+010,thunder Wave,-3,100,0,0
+011,ThunderShock,30,100,0,0
+012,Quick atack,30,100,0,0
+013,Thunder Punch,50,100,0,0
+014,Fury swipes,10,100,0,0
+015,Agility,0,100,0,0
+016,Random Atack,0,95,0,0
+016,Psi gun,40,100,0,0
+017,Doom,30,95,0,0
+018,Shadow Ball,40,100,0,0
+019,Hydro Pump,60,60,0,0

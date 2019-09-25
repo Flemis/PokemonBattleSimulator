@@ -1,0 +1,7 @@
+Pokemon: meowth Level: 33
+Atk: 495 Defesa: 330 Speed: 330 Spk Atk: : 825
+ Skill:  name=Tackle, damage=10, pp=10, accuracy=0, critRate=0.0}
+ Skill:  name=Scrath, damage=15, pp=10, accuracy=0, critRate=0.0}
+ Skill:  name=Bite, damage=20, pp=10, accuracy=0, critRate=0.0}
+ Skill:  name=tail Whip, damage=0, pp=10, accuracy=0, critRate=0.0}
+ Skill:  name=Headbutt, damage=30, pp=10, accuracy=0, critRate=0.0}
