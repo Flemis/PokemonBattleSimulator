@@ -5,7 +5,9 @@
  */
 package main;
 
+import entities.Match;
 import entities.Pokemon;
+import entities.Trainer;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,10 +15,8 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-     
-     Pokemon pkm = new Pokemon("meowth");
-    
-     
-     
+    Match m = new Match();  
+ 
+    m.Ismatch();
 }
 }

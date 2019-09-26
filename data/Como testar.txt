@@ -1,0 +1,34 @@
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Os arquivos .txt precisam ser informados dos seus diretórios nas classes, também arquivos .txt para escrever as informações dos pokemons e Trainers.
+Exemplos:
+
+Classe pokemon 
+  gerarPokemon();
+	String Names = "C://xxxx//xxxx//data//pokemons.txt";
+  geraAtaques();
+    String Skills = "C://xxxx//xxxx//data//Skills.txt ";
+  gerarLog()
+    String path = "C://xxx//xxxx//xxxx//xxx.txt";
+
+Classe Trainer
+  criarLog()
+    String path = "c://xxx//xxx//xxx/xxx.txt";
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Testar no console:
+Sem tratamentos de erros.
+
+1-Numero de pokemons para cada treinador(max 6);
+2-Nome do primeiro e segundo treinador;
+3-Escolher o pkmn principal do primeiro;
+4-Escolher opção do menu, atacar avança;
+5-Escolher o pkmn principal do segundo;
+6-Escolher opção do menu, atacar avança;
+8-(Parte confusa)-O pkmn com maior speed ataca primeiro, só escolher o numero do ataque;
+9-O mais lento escolhe o ataque depois;
+10-Mostra o dano e novamente pros menus e continua até algum pokemon cair em combate;
+11-Caso o número de pokemons para cada treinador for mais que um, caso um pkm seu cair, você escolhe outro até ficar sem nenhuma opção e perder;
+12-Fim do jogo
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

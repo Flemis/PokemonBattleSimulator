@@ -73,14 +73,26 @@ public class Skill {
     public double getCritRate() {
         return critRate;
     }
+    
+    public void drawPP(){
+       pp--; 
+    }
+    
+    public boolean havePP(){
+       if(getPp() > 0)
+         return true;
+       else
+         return false;
+    }
 
     public void setCritRate(double critRate) {
         this.critRate = critRate;
     }
+    
 
     @Override
     public String toString() {
-        return " Skill: " + " name=" + name + ", damage=" + damage + ", pp=" + pp + ", accuracy=" + accuracy + ", critRate=" + critRate + '}';
+        return " name=" + name + ", damage=" + damage + ", pp=" + pp + ", accuracy=" + accuracy + ", critRate=" + critRate;
     }
     
     

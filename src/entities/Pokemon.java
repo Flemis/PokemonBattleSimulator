@@ -10,13 +10,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class Pokemon {
     private String name;
     private int level;
-    private int atk,def,spd,spAtk,HP;
-    private Conditions cd;
+    private int atk,def,spd,spAtk,HP,DpsAtk;
+    private Conditions cd = Conditions.STAND;
     private List<Skill> ataques = new ArrayList<>();
     
 
@@ -28,8 +29,43 @@ public class Pokemon {
         return level;
     }
 
+    public int getHP() {
+        return HP;
+    }
+    
+    public int getAtk(){
+        return atk;
+    }
+
+    public int getSpd() {
+        return spd;
+    }
+    
+    
     public void setLevel(int level) {
         this.level = level;
+    }
+    
+    public void getDamage(int x){
+       if(HP - x >= 0)
+       HP -= x;
+       else
+       HP = 0;
+    }
+    
+    public boolean isFallen(){
+       if (getHP() <= 0)
+         return true;
+       else
+          return false;
+    }
+    
+    public void setDps(Skill s){
+        this.DpsAtk = s.getDamage() + getAtk();
+    }
+
+    public int getDpsAtk() {
+        return DpsAtk;
     }
     
     public void gerarStatus(){
@@ -44,9 +80,23 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        return "Pokemon{" + "name=" + name + ", level=" + level + ", atk=" + atk + ", def=" + def + ", spd=" + spd + ", spdAtk=" + spAtk + ", HP=" + HP + ", cd=" + cd + ", ataques=" + ataques + '}';
+        return " name= " + name + ", level=" + level;
     }
-     
+    
+    public void geraNome(){
+       String names = "";
+       
+       try (BufferedReader br = new BufferedReader(new FileReader(names))){
+            String line = br.readLine();
+            name = line;
+            System.out.println("--------------------------");
+            System.out.println(name + "{ Gerado com sucesso! }");
+            br.close();
+       }
+       catch(IOException e){
+           System.out.println(e); 
+       }
+    }
     
     
     public void geraAtaques(){
@@ -55,11 +105,12 @@ public class Pokemon {
         
         try (BufferedReader br = new BufferedReader(new FileReader(Skills))){
             String line = br.readLine();
-            while (ataques.size() <= 4){
+            while (ataques.size() <= 3){
                 ataque = Skill.newSkill(line);
                 ataques.add(ataque);
                 line = br.readLine();
             }
+            System.out.println("--------------------------");
             System.out.println("Ataques gerados com sucesso! ");
             br.close();
         }
@@ -69,8 +120,37 @@ public class Pokemon {
     };
     
     public String informarStatus(){
-        return ("Atk: " + atk + " Defesa: " + def + " Speed: " + spd + " Spk Atk: : " + spAtk);
+        return ("Atk: " + atk + " Defesa: " + def + " Speed: " + spd + " Spk Atk: : " + spAtk + " HP: " + HP);
     }
+    
+    public void informarAtaques(){
+        for(Skill skill:ataques){
+            System.out.println("\n--------------");
+            System.out.println(ataques.lastIndexOf(skill) + 1 + " " +skill);
+        }
+        System.out.println("-------------------");
+    }
+    
+    public Skill selecionarAtk(){
+        int resp;
+        Scanner sr = new Scanner(System.in);
+        do{
+        System.out.println(getName() + "     " + getHP());
+        informarAtaques();
+        System.out.println("Selecione um atk: ");
+        resp = sr.nextInt() - 1;
+        if (ataques.get(resp).havePP())
+            break;  
+        else{
+            System.out.println("PP's desse movimento acabou!");
+        }
+        }while(true);
+        setDps(ataques.get(resp));
+        ataques.get(resp).drawPP();
+        return ataques.get(resp);
+    }
+    
+ 
     public void gerarLog(){
        String path =  "";
        
@@ -81,6 +161,7 @@ public class Pokemon {
                 bw.write(ataque.toString());
                 bw.newLine();
             }
+            System.out.println("-----------");    
             System.out.println("Sucess");
             bw.close();
         } 
@@ -95,11 +176,11 @@ public class Pokemon {
        level = rand.nextInt(99);
     }
     
-     public Pokemon(String name) {
+     public Pokemon() {
         gerarLevel();
         gerarStatus();
         geraAtaques();
-        this.name = name;
+        geraNome();
         gerarLog();
     }
 }
