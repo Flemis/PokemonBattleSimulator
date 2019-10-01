@@ -1,6 +1,7 @@
 
 package entities;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -19,6 +20,7 @@ public class Pokemon {
     private int atk,def,spd,spAtk,HP,DpsAtk;
     private Conditions cd = Conditions.STAND;
     private List<Skill> ataques = new ArrayList<>();
+    
     
 
     public String getName() {
@@ -67,7 +69,7 @@ public class Pokemon {
     public int getDpsAtk() {
         return DpsAtk;
     }
-    
+ 
     public void gerarStatus(){
       HP = level * 45;
       atk = level * 15;
@@ -83,41 +85,54 @@ public class Pokemon {
         return " name= " + name + ", level=" + level;
     }
     
-    public void geraNome(){
-       String names = "";
+     public int geraRandom(List lista) {
+       Random a = new Random();
+       int op = a.nextInt(lista.size());
+       return op;
+    }
+     
+    
+     
+    public void geraNome(List lista){
+       int x = geraRandom(lista);
+       name = lista.get(x).toString();
+       lista.remove(x);
+    }
+    
+    public List loadSkills(){
+        List<String> txtSkills = new ArrayList<>();
+        String names = "C:\\Users\\Gabriel\\Documents\\NetBeansProjects\\PokemonBattleSimulator\\data\\Skills.txt";
        
        try (BufferedReader br = new BufferedReader(new FileReader(names))){
-            String line = br.readLine();
-            name = line;
-            System.out.println("--------------------------");
-            System.out.println(name + "{ Gerado com sucesso! }");
-            br.close();
-       }
-       catch(IOException e){
-           System.out.println(e); 
+         String line = br.readLine();
+         while(line != null){
+           txtSkills.add(line);
+           line = br.readLine();
+         }
+         System.out.println("leitura realizada com sucesso");
+         return txtSkills;
+       }catch(IOException e){
+           System.out.println(e.getMessage());
+           return null;
        }
     }
     
+   
     
-    public void geraAtaques(){
-        String Skills = "";
+    public void geraAtaques(List list){
         Skill ataque;
-        
-        try (BufferedReader br = new BufferedReader(new FileReader(Skills))){
-            String line = br.readLine();
+        int op;
             while (ataques.size() <= 3){
-                ataque = Skill.newSkill(line);
+                op = geraRandom(list);
+                ataque = Skill.newSkill(list.get(op).toString());
                 ataques.add(ataque);
-                line = br.readLine();
+                list.remove(op);
+       
             }
             System.out.println("--------------------------");
             System.out.println("Ataques gerados com sucesso! ");
-            br.close();
-        }
-        catch(IOException e){
-            System.out.println(e);
-        }
-    };
+    }
+
     
     public String informarStatus(){
         return ("Atk: " + atk + " Defesa: " + def + " Speed: " + spd + " Spk Atk: : " + spAtk + " HP: " + HP);
@@ -152,7 +167,7 @@ public class Pokemon {
     
  
     public void gerarLog(){
-       String path =  "";
+       String path =  "C:\\Users\\Gabriel\\Documents\\NetBeansProjects\\PokemonBattleSimulator\\data\\pkmLog.txt";
        
        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path,false))){
             bw.write("Pokemon: " + getName() + " Level: " + getLevel() + "\n");
@@ -172,15 +187,16 @@ public class Pokemon {
     
     private void gerarLevel(){
        Random rand = new Random();
-       
-       level = rand.nextInt(99);
+       level = rand.nextInt(101);
+       if(level == 0)
+         gerarLevel();
     }
     
-     public Pokemon() {
+     public Pokemon(List lista) {
         gerarLevel();
         gerarStatus();
-        geraAtaques();
-        geraNome();
+        geraAtaques(loadSkills());
+        geraNome(lista);
         gerarLog();
     }
 }

@@ -1,7 +1,9 @@
 
 package entities;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,12 +17,31 @@ public class Trainer {
     List<Pokemon> pokemons = new ArrayList<>();
     Pokemon mainPkm;
     private boolean haveMain;
-
+    private List<String> txtNames = new ArrayList<>();
     
-    public void gerarPokemons(int n){
+    public int getSize(){
+        return txtNames.size();
+    }
+    
+     public void loadNames(){
+        String names = "C:\\Users\\Gabriel\\Documents\\NetBeansProjects\\PokemonBattleSimulator\\data\\pokemons.txt";
+       
+       try (BufferedReader br = new BufferedReader(new FileReader(names))){
+         String line = br.readLine();
+         while(line != null){
+           txtNames.add(line);
+           line = br.readLine();
+         }
+         System.out.println("leitura realizada com sucesso");
+       }catch(IOException e){
+           System.out.println(e.getMessage()); 
+       }
+    }
+    
+    public void gerarPokemons(int n,List lista){
       Pokemon pkm;
       while (pokemons.size() < n){
-         pkm = new Pokemon();
+         pkm = new Pokemon(lista);
          pokemons.add(pkm);
        }
     };
@@ -81,7 +102,7 @@ public class Trainer {
     
 
     public void criarLog(){
-       String path =  "";
+       String path =  "C:\\Users\\Gabriel\\Documents\\NetBeansProjects\\PokemonBattleSimulator\\data\\TrainerLog.txt";
        
        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path,false))){
             bw.write("Name: " + Name + "\n");
@@ -104,10 +125,10 @@ public class Trainer {
     
         public Trainer(String Name,int n) {
         this.Name = Name;
-          gerarPokemons(n);
+        loadNames();
+          gerarPokemons(n,txtNames);
           haveMain = false;
           criarLog();
         }
     }
     
-

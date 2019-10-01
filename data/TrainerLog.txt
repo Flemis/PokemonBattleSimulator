@@ -1,0 +1,67 @@
+Name: gary
+ name= Tentacool, level=85
+
+ name= Remoraid, level=67
+
+ name= Venasaur, level=77
+
+ name= Pidgey, level=2
+
+ name= Arcanine, level=83
+
+ name= Tauros, level=81
+
+ name= Pikachu, level=97
+
+ name= Ditto, level=63
+
+ name= Mewtwo, level=59
+
+ name= Evee, level=79
+
+ name= Articuno, level=34
+
+ name= Dugtrio, level=87
+
+ name= Woobfett, level=66
+
+ name= Electrode, level=83
+
+ name= Umbreon, level=23
+
+ name= Squirtle, level=54
+
+ name= Digglet, level=75
+
+ name= Gyarados, level=75
+
+ name= Zapdos, level=82
+
+ name= Doduo, level=41
+
+ name= Moltres, level=75
+
+ name= Mew, level=74
+
+ name= Pidgeotto, level=44
+
+ name= Jolteon, level=63
+
+ name= Magikarp, level=77
+
+ name= Seaking, level=96
+
+ name= Voltoborb, level=66
+
+ name= Starmie, level=2
+
+ name= Blastoise, level=56
+
+ name= Victribell, level=14
+
+ name= Charmander, level=44
+
+ name= Tentacruel, level=60
+
+ name= Bulbasaur, level=81
+

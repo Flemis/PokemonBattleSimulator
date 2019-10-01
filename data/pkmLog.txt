@@ -1,0 +1,6 @@
+Pokemon: Bulbasaur Level: 81
+Atk: 1215 Defesa: 810 Speed: 810 Spk Atk: : 2025 HP: 3645
+ name=Fury swipes, damage=10, pp=100, accuracy=0, critRate=0.0
+ name=Scrath, damage=15, pp=10, accuracy=0, critRate=0.0
+ name=Hydro Pump, damage=60, pp=60, accuracy=0, critRate=0.0
+ name=Quick atack, damage=30, pp=100, accuracy=0, critRate=0.0
